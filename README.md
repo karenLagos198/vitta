@@ -13,5 +13,8 @@ Los datos son de ejemplo en memoria; backend (Flask) y base de datos (SQLite) ve
 ## IA
 `nn.js` implementa una red neuronal pequeña (1 capa oculta, backpropagation) que predice la categoría de un gasto a partir de su texto.
 
+
 ## Ejecutar
-Abrir `frontend/index.html` en el navegador.
+1. Descargar o clonar este repositorio.
+2. Entrar a la carpeta `frontend`.
+3. Hacer doble clic en el archivo `index.html` (se abre con tu navegador).

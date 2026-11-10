@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitta · Vive más, olvida menos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="logo">Vitta</div>
+  <p class="slogan">Vive más, olvida menos.</p>
+  <nav>
+    <a href="#resumen" class="active">Resumen</a>
+    <a href="#tareas">Tareas</a>
+    <a href="#finanzas">Finanzas</a>
+    <a href="#recordatorios">Recordatorios</a>
+    <a href="#asistente">Asistente IA</a>
+  </nav>
+  <div class="user">Santiago Rondon Díaz</div>
+</aside>
+
+<main>
+  <header class="top">
+    <h1 id="titulo">Resumen del día</h1>
+    <span class="fecha" id="fecha"></span>
+  </header>
+
+  <!-- RESUMEN -->
+  <section id="resumen" class="view">
+    <div class="cards">
+      <div class="card"><h3>Tareas pendientes</h3><p class="big" id="kpi-tareas">0</p></div>
+      <div class="card"><h3>Saldo actual</h3><p class="big" id="kpi-saldo">$0</p></div>
+      <div class="card"><h3>Recordatorios</h3><p class="big" id="kpi-rec">0</p></div>
+    </div>
+    <div class="card">
+      <h3>Gastos por categoría</h3>
+      <div id="grafico"></div>
+    </div>
+    <div class="card">
+      <h3>Progreso de tareas</h3>
+      <div class="barra"><div id="progreso"></div></div>
+      <small id="progreso-txt"></small>
+    </div>
+  </section>
+
+  <!-- TAREAS -->
+  <section id="tareas" class="view hidden">
+    <div class="card">
+      <form id="form-tarea" class="fila">
+        <input id="t-texto" placeholder="Nueva tarea" required>
+        <select id="t-prio"><option>Alta</option><option selected>Media</option><option>Baja</option></select>
+        <input id="t-fecha" type="date">
+        <button>Agregar</button>
+      </form>
+      <ul id="lista-tareas" class="lista"></ul>
+    </div>
+  </section>
+
+  <!-- FINANZAS -->
+  <section id="finanzas" class="view hidden">
+    <div class="card">
+      <form id="form-mov" class="fila">
+        <input id="m-desc" placeholder="Descripción (ej: almuerzo)" required>
+        <input id="m-monto" type="number" min="0" placeholder="Monto" required>
+        <select id="m-tipo"><option value="gasto">Gasto</option><option value="ingreso">Ingreso</option></select>
+        <select id="m-cat"><option>Comida</option><option>Transporte</option><option>Ocio</option><option>Servicios</option><option>Otros</option></select>
+        <button>Registrar</button>
+      </form>
+      <ul id="lista-mov" class="lista"></ul>
+    </div>
+  </section>
+
+  <!-- RECORDATORIOS -->
+  <section id="recordatorios" class="view hidden">
+    <div class="card">
+      <form id="form-rec" class="fila">
+        <input id="r-texto" placeholder="Pago o evento" required>
+        <input id="r-fecha" type="date" required>
+        <button>Agregar</button>
+      </form>
+      <ul id="lista-rec" class="lista"></ul>
+    </div>
+  </section>
+
+  <!-- ASISTENTE IA -->
+  <section id="asistente" class="view hidden">
+    <div class="card">
+      <h3>Categorizador con red neuronal</h3>
+      <p class="nota">Escribe un gasto y una red neuronal pequeña (entrenada en tu navegador) predice su categoría.</p>
+      <div class="fila">
+        <input id="ia-texto" placeholder="Ej: pasaje del bus, pizza, netflix, recibo de luz">
+        <button id="ia-btn">Predecir</button>
+      </div>
+      <div id="ia-res"></div>
+    </div>
+  </section>
+</main>
+<script src="nn.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

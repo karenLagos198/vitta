@@ -7,42 +7,55 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<aside class="sidebar">
-  <div class="logo">Vitta</div>
-  <p class="slogan">Vive más, olvida menos.</p>
-  <nav>
-    <a href="#resumen" class="active">Resumen</a>
-    <a href="#tareas">Tareas</a>
-    <a href="#finanzas">Finanzas</a>
-    <a href="#recordatorios">Recordatorios</a>
-    <a href="#asistente">Asistente IA</a>
-  </nav>
-       <div class="user">
-       Santiago Rondon Díaz<br>
-       Karen Lagos Camacho<br>
-       Samuel David Gonzalez Petro
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Taller de Programación · Ingeniería de Software</p>
+      <h1 class="logo">Vitta</h1>
+      <p class="slogan">Vive más, olvida menos.</p>
+      <p class="desc">Organizador personal para gestionar en un solo lugar las tareas pendientes, las finanzas y los recordatorios de la vida diaria.</p>
+    </div>
+    <div class="team">
+      <span>Integrantes</span>
+      <ul>
+        <li>Santiago Rondon Díaz</li>
+        <li>Karen Lagos Camacho</li>
+        <li>Samuel David Gonzalez Petro</li>
+      </ul>
+    </div>
   </div>
-<main>
-  <header class="top">
-    <h1 id="titulo">Resumen del día</h1>
+  <nav class="menu">
+    <div class="wrap menu-in">
+      <a href="#resumen" class="active">Resumen</a>
+      <a href="#tareas">Tareas</a>
+      <a href="#finanzas">Finanzas</a>
+      <a href="#recordatorios">Recordatorios</a>
+      <a href="#asistente">Asistente IA</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="top">
+    <h2 id="titulo">Resumen del día</h2>
     <span class="fecha" id="fecha"></span>
-  </header>
+  </div>
 
   <!-- RESUMEN -->
   <section id="resumen" class="view">
     <div class="cards">
-      <div class="card"><h3>Tareas pendientes</h3><p class="big" id="kpi-tareas">0</p></div>
-      <div class="card"><h3>Saldo actual</h3><p class="big" id="kpi-saldo">$0</p></div>
-      <div class="card"><h3>Recordatorios</h3><p class="big" id="kpi-rec">0</p></div>
+      <div class="card kpi"><h3>Tareas pendientes</h3><p class="big" id="kpi-tareas">0</p></div>
+      <div class="card kpi"><h3>Saldo actual</h3><p class="big" id="kpi-saldo">$0</p></div>
+      <div class="card kpi"><h3>Recordatorios</h3><p class="big" id="kpi-rec">0</p></div>
     </div>
-    <div class="card">
-      <h3>Gastos por categoría</h3>
-      <div id="grafico"></div>
-    </div>
-    <div class="card">
-      <h3>Progreso de tareas</h3>
-      <div class="barra"><div id="progreso"></div></div>
-      <small id="progreso-txt"></small>
+    <div class="grid2">
+      <div class="card"><h3>Gastos por categoría</h3><div id="grafico"></div></div>
+      <div class="card">
+        <h3>Progreso de tareas</h3>
+        <div class="barra"><div id="progreso"></div></div>
+        <small id="progreso-txt"></small>
+      </div>
     </div>
   </section>
 
@@ -98,6 +111,8 @@
     </div>
   </section>
 </main>
+
+<footer class="foot">Vitta · Primera versión del Front-End</footer>
 <script src="nn.js"></script>
 <script src="app.js"></script>
 </body>

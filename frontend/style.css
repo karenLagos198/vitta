@@ -31,7 +31,6 @@ button{background:var(--gold);color:var(--dark);border:0;border-radius:8px;paddi
 .ia-item{display:flex;align-items:center;gap:8px;margin:4px 0}
 .ia-item .b{background:var(--teal);height:12px;border-radius:6px}
 @media(max-width:700px){body{flex-direction:column}.sidebar{width:100%}nav{flex-direction:row;flex-wrap:wrap}}
-/* Ajustes de diseño */
 .sidebar{flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto}
 main{flex:1;min-width:0}
 .top{flex-wrap:wrap;gap:8px}

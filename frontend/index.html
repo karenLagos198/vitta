@@ -17,6 +17,7 @@
       <p class="desc">Organizador personal para gestionar en un solo lugar las tareas pendientes, las finanzas y los recordatorios de la vida diaria.</p>
     </div>
     <div class="team">
+      <div class="userbar"><span id="usuario">…</span> <button id="salir" type="button" class="mini">Salir</button></div>
       <span>Integrantes</span>
       <ul>
         <li>Santiago Rondon Díaz</li>
@@ -41,13 +42,13 @@
     <h2 id="titulo">Resumen del día</h2>
     <span class="fecha" id="fecha"></span>
   </div>
+  <p id="aviso" class="aviso hidden"></p>
 
-  <!-- RESUMEN -->
   <section id="resumen" class="view">
     <div class="cards">
       <div class="card kpi"><h3>Tareas pendientes</h3><p class="big" id="kpi-tareas">0</p></div>
       <div class="card kpi"><h3>Saldo actual</h3><p class="big" id="kpi-saldo">$0</p></div>
-      <div class="card kpi"><h3>Recordatorios</h3><p class="big" id="kpi-rec">0</p></div>
+      <div class="card kpi"><h3>Recordatorios próximos</h3><p class="big" id="kpi-rec">0</p></div>
     </div>
     <div class="grid2">
       <div class="card"><h3>Gastos por categoría</h3><div id="grafico"></div></div>
@@ -55,29 +56,29 @@
         <h3>Progreso de tareas</h3>
         <div class="barra"><div id="progreso"></div></div>
         <small id="progreso-txt"></small>
+        <h3 class="sub">Próximos recordatorios</h3>
+        <ul id="proximos" class="lista"></ul>
       </div>
     </div>
   </section>
 
-  <!-- TAREAS -->
   <section id="tareas" class="view hidden">
     <div class="card">
-      <form id="form-tarea" class="fila">
-        <input id="t-texto" placeholder="Nueva tarea" required>
+      <form id="form-tarea" class="fila" novalidate>
+        <input id="t-texto" placeholder="Nueva tarea" maxlength="120">
         <select id="t-prio"><option>Alta</option><option selected>Media</option><option>Baja</option></select>
-        <input id="t-fecha" type="date">
+        <input id="t-fecha" type="date" title="Fecha límite">
         <button>Agregar</button>
       </form>
       <ul id="lista-tareas" class="lista"></ul>
     </div>
   </section>
 
-  <!-- FINANZAS -->
   <section id="finanzas" class="view hidden">
     <div class="card">
-      <form id="form-mov" class="fila">
-        <input id="m-desc" placeholder="Descripción (ej: almuerzo)" required>
-        <input id="m-monto" type="number" min="0" placeholder="Monto" required>
+      <form id="form-mov" class="fila" novalidate>
+        <input id="m-desc" placeholder="Descripción (ej: almuerzo)" maxlength="120">
+        <input id="m-monto" type="number" min="1" step="any" placeholder="Monto">
         <select id="m-tipo"><option value="gasto">Gasto</option><option value="ingreso">Ingreso</option></select>
         <select id="m-cat"><option>Comida</option><option>Transporte</option><option>Ocio</option><option>Servicios</option><option>Otros</option></select>
         <button>Registrar</button>
@@ -86,33 +87,31 @@
     </div>
   </section>
 
-  <!-- RECORDATORIOS -->
   <section id="recordatorios" class="view hidden">
     <div class="card">
-      <form id="form-rec" class="fila">
-        <input id="r-texto" placeholder="Pago o evento" required>
-        <input id="r-fecha" type="date" required>
+      <form id="form-rec" class="fila" novalidate>
+        <input id="r-texto" placeholder="Pago o evento" maxlength="120">
+        <input id="r-fecha" type="date">
         <button>Agregar</button>
       </form>
       <ul id="lista-rec" class="lista"></ul>
     </div>
   </section>
 
-  <!-- ASISTENTE IA -->
   <section id="asistente" class="view hidden">
     <div class="card">
-      <h3>Categorizador con red neuronal</h3>
-      <p class="nota">Escribe un gasto y una red neuronal pequeña (entrenada en tu navegador) predice su categoría.</p>
+      <h3>Categorizador con red neuronal (vista previa)</h3>
+      <p class="nota">Escribe un gasto y una red neuronal pequeña (entrenada en tu navegador) predice su categoría. La integración completa del servicio de IA llegará en la entrega final.</p>
       <div class="fila">
         <input id="ia-texto" placeholder="Ej: pasaje del bus, pizza, netflix, recibo de luz">
-        <button id="ia-btn">Predecir</button>
+        <button id="ia-btn" type="button">Predecir</button>
       </div>
       <div id="ia-res"></div>
     </div>
   </section>
 </main>
 
-<footer class="foot">Vitta · Primera versión del Front-End</footer>
+<footer class="foot">Vitta · Prototipo funcional (Fase II)</footer>
 <script src="nn.js"></script>
 <script src="app.js"></script>
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitta · Ingresar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+<div class="login-card">
+  <h1 class="logo">Vitta</h1>
+  <p class="slogan">Vive más, olvida menos.</p>
+
+  <div class="tabs">
+    <button type="button" id="tab-login" class="tab active">Iniciar sesión</button>
+    <button type="button" id="tab-reg" class="tab">Registrarme</button>
+  </div>
+
+  <form id="form-login" novalidate>
+    <input id="l-email" type="email" placeholder="Correo" autocomplete="email">
+    <input id="l-pass" type="password" placeholder="Contraseña" autocomplete="current-password">
+    <button class="full">Entrar</button>
+  </form>
+
+  <form id="form-reg" class="hidden" novalidate>
+    <input id="r-nombre" placeholder="Nombre completo" autocomplete="name">
+    <input id="r-email" type="email" placeholder="Correo" autocomplete="email">
+    <input id="r-pass" type="password" placeholder="Contraseña (mín. 6 caracteres)" autocomplete="new-password">
+    <button class="full">Crear cuenta</button>
+  </form>
+
+  <p id="aviso" class="aviso hidden"></p>
+</div>
+<script src="auth.js"></script>
+</body>
+</html>

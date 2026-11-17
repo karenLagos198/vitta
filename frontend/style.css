@@ -52,3 +52,23 @@ button:hover{filter:brightness(.95)}
 .foot{text-align:center;padding:18px;color:#6b7c80;font-size:.85rem;border-top:1px solid var(--line)}
 
 @media(max-width:600px){.logo{font-size:2.4rem}.wrap{padding:0 16px}}
+
+/* ---- Fase II ---- */
+.userbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;font-weight:600}
+.mini{padding:4px 12px;font-size:.8rem}
+.sub{margin-top:18px}
+.aviso{padding:10px 14px;border-radius:8px;margin:0 0 14px;font-weight:500}
+.aviso.err{background:#fde8e4;color:#9b2c1f}
+.aviso.ok{background:var(--mint);color:var(--dark)}
+.badge{font-style:normal;font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--mint);color:var(--dark)}
+.badge.Alta{background:#f6d5cf;color:#9b2c1f}
+.badge.Baja{background:#e8eef0;color:#456}
+.login-body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--dark)}
+.login-card{background:#fff;border-radius:16px;padding:32px;width:min(380px,92vw)}
+.login-card .logo{color:var(--dark);font-size:2.4rem}
+.login-card form{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.login-card .slogan{margin:4px 0 16px}
+.full{width:100%}
+.tabs{display:flex;gap:6px}
+.tab{flex:1;background:var(--mint);color:var(--dark)}
+.tab.active{background:var(--gold)}

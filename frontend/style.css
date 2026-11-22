@@ -72,3 +72,13 @@ button:hover{filter:brightness(.95)}
 .tabs{display:flex;gap:6px}
 .tab{flex:1;background:var(--mint);color:var(--dark)}
 .tab.active{background:var(--gold)}
+
+/* ---- Asistente IA (chat) ---- */
+.chat-log{display:flex;flex-direction:column;gap:8px;max-height:380px;min-height:140px;overflow-y:auto;margin-bottom:12px;padding:4px}
+.msg{max-width:80%;padding:10px 14px;border-radius:14px;white-space:pre-wrap;line-height:1.45}
+.msg.yo{align-self:flex-end;background:var(--teal);color:#fff;border-bottom-right-radius:4px}
+.msg.ia{align-self:flex-start;background:var(--mint);color:var(--dark);border-bottom-left-radius:4px}
+.msg.err{background:#fde8e4;color:#9b2c1f}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{background:var(--mint);color:var(--dark);font-weight:500;font-size:.85rem;padding:6px 12px}
+button:disabled{opacity:.6;cursor:wait}

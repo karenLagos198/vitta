@@ -124,6 +124,45 @@ $("#ia-btn").onclick = () => {
     : "<small>No reconozco esas palabras, prueba con otras.</small>";
 };
 
+// ---------- asistente IA (chat con Claude a través de /api/asistente) ----------
+const historialChat = [];
+
+function burbuja(clase, texto) {
+  const log = $("#chat-log"), b = document.createElement("div");
+  b.className = "msg " + clase;
+  b.textContent = texto;          // textContent: la respuesta de la IA nunca se interpreta como HTML
+  log.appendChild(b);
+  log.scrollTop = log.scrollHeight;
+  return b;
+}
+
+async function enviarChat(texto) {
+  texto = texto.trim();
+  if (!texto) return;
+  burbuja("yo", texto);
+  const espera = burbuja("ia", "Pensando…");
+  $("#chat-btn").disabled = true;
+  try {
+    const r = await api("asistente", "POST", { mensaje: texto, historial: historialChat.slice(-10) });
+    espera.textContent = r.respuesta;
+    historialChat.push({ role: "user", content: texto }, { role: "assistant", content: r.respuesta });
+  } catch (e) {
+    espera.textContent = e.message;
+    espera.classList.add("err");
+  } finally {
+    $("#chat-btn").disabled = false;
+    $("#chat-texto").focus();
+  }
+}
+
+$("#chat-form").onsubmit = e => {
+  e.preventDefault();
+  const texto = $("#chat-texto").value;
+  $("#chat-texto").value = "";
+  enviarChat(texto);
+};
+document.addEventListener("click", e => { if (e.target.dataset.q) enviarChat(e.target.dataset.q); });
+
 // ---------- inicio ----------
 (async () => {
   await intentar(async () => { $("#usuario").textContent = (await api("me")).nombre; });

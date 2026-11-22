@@ -100,8 +100,26 @@
 
   <section id="asistente" class="view hidden">
     <div class="card">
-      <h3>Categorizador con red neuronal (vista previa)</h3>
-      <p class="nota">Escribe un gasto y una red neuronal pequeña (entrenada en tu navegador) predice su categoría. La integración completa del servicio de IA llegará en la entrega final.</p>
+      <h3>Pregúntale a Vitta</h3>
+      <p class="nota">Consulta tus tareas pendientes, tus gastos o tus próximos recordatorios en lenguaje natural.</p>
+      <div id="chat-log" class="chat-log" aria-live="polite">
+        <div class="msg ia">Hola, soy Vitta. Pregúntame por tus tareas pendientes, tus gastos o tus recordatorios.</div>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-q="¿Qué tengo pendiente?">¿Qué tengo pendiente?</button>
+        <button type="button" class="chip" data-q="¿Qué tareas están vencidas o vencen esta semana?">¿Qué vence esta semana?</button>
+        <button type="button" class="chip" data-q="¿En qué categoría gasto más?">¿En qué gasto más?</button>
+        <button type="button" class="chip" data-q="¿Cuáles son mis próximos recordatorios?">Próximos recordatorios</button>
+      </div>
+      <form id="chat-form" class="fila" novalidate>
+        <input id="chat-texto" placeholder="Escribe tu pregunta…" maxlength="500" autocomplete="off">
+        <button id="chat-btn">Enviar</button>
+      </form>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Categorizador con red neuronal</h3>
+      <p class="nota">Escribe un gasto y una red neuronal pequeña (entrenada en tu navegador) predice su categoría.</p>
       <div class="fila">
         <input id="ia-texto" placeholder="Ej: pasaje del bus, pizza, netflix, recibo de luz">
         <button id="ia-btn" type="button">Predecir</button>

@@ -7,6 +7,7 @@ from functools import wraps
 from flask import Flask, jsonify, request, send_from_directory, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
+import asistente
 import db
 import validaciones as v
 
@@ -224,6 +225,18 @@ def resumen():
                    tareas_pendientes=t["total"] - t["hechas"],
                    ingresos=ing, gastos=gas, saldo=ing - gas,
                    por_categoria=por_cat, proximos=proximos)
+
+
+# ---------- asistente IA ----------
+@app.post("/api/asistente")
+@login_required
+def asistente_chat():
+    d = datos()
+    try:
+        texto = asistente.responder(session["uid"], session["nombre"], d.get("mensaje"), d.get("historial"))
+    except asistente.AsistenteNoDisponible as e:
+        return error(str(e), 503)
+    return jsonify(respuesta=texto)
 
 
 if __name__ == "__main__":

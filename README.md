@@ -7,7 +7,7 @@
 ## Estado del proyecto
 - **Fase I:** repositorio, estructura inicial y primera interfaz (Front-End).
 - **Fase II (actual):** prototipo funcional con backend, base de datos, validaciones y navegación entre módulos.
-- **Entrega final:** integración del servicio de Inteligencia Artificial. En `frontend/nn.js` hay una vista previa: una red neuronal pequeña que predice la categoría de un gasto.
+- **Entrega final:** integración del servicio de Inteligencia Artificial: chat asistente (modelo local con Ollama o Claude) que responde sobre tareas, finanzas y recordatorios del usuario. Además, en `frontend/nn.js` una red neuronal pequeña predice la categoría de un gasto.
 
 ## Funcionalidades del prototipo
 | Módulo | Qué permite |
@@ -23,6 +23,7 @@
 vitta/
 ├── backend/
 │   ├── app.py            # API Flask (rutas)
+│   ├── asistente.py      # asistente IA (chat; Ollama local o Claude)
 │   ├── db.py             # conexión a SQLite
 │   ├── schema.sql        # tablas de la base de datos
 │   └── validaciones.py   # validaciones de los datos
@@ -47,7 +48,28 @@ python backend/app.py
 ```
 Abrir **http://127.0.0.1:5000** en el navegador, crear una cuenta e ingresar. La base de datos `backend/vitta.db` se crea sola al iniciar.
 
-Pruebas: `python -m unittest discover tests`
+### Asistente IA (chat)
+El chat de la sección **Asistente IA** responde preguntas sobre las tareas, finanzas y recordatorios del usuario. Puede usar dos proveedores:
+
+**1. Modelo local con Ollama (gratis, por defecto).** No necesita clave ni internet después de descargar el modelo.
+1. Instalar Ollama desde https://ollama.com y dejarlo abierto.
+2. Descargar el modelo (una sola vez, ~2 GB): `ollama pull qwen2.5:3b`
+3. Iniciar Vitta normalmente (`python backend/app.py`).
+
+Se puede cambiar el modelo con la variable `VITTA_MODELO_LOCAL` (por ejemplo `llama3.2:3b`).
+
+**2. Claude (API de Anthropic, de pago).** Opcional: `pip install anthropic` y definir la clave como variable de entorno antes de iniciar el servidor (nunca la subas al repositorio):
+```bash
+# Linux / macOS
+export ANTHROPIC_API_KEY="tu-clave"
+# Windows (PowerShell)
+$env:ANTHROPIC_API_KEY="tu-clave"
+```
+Si existe la clave se usa Claude; si no, Ollama. Se puede forzar uno con `VITTA_IA=ollama` o `VITTA_IA=claude`.
+
+Si el proveedor no está disponible, la app funciona igual y el chat muestra un mensaje explicando qué falta.
+
+Pruebas: `python -m unittest discover tests` (el chat se prueba con modelos simulados, no necesita clave ni Ollama).
 
 ## API (resumen)
 | Método | Ruta | Descripción |
@@ -60,6 +82,7 @@ Pruebas: `python -m unittest discover tests`
 | GET/POST | `/api/recordatorios` | Listar / crear recordatorios |
 | DELETE | `/api/recordatorios/<id>` | Eliminar recordatorio |
 | GET | `/api/resumen` | Datos del panel principal |
+| POST | `/api/asistente` | Pregunta al asistente IA sobre tus tareas, finanzas y recordatorios |
 
 ## Validaciones básicas
 - **Frontend:** campos obligatorios, monto mayor que 0, fecha obligatoria en recordatorios, correo con formato válido y contraseña de mínimo 6 caracteres.
